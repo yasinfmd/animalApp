@@ -34,8 +34,8 @@ export const fetchPosts = data => {
 export const likePost = (data, index) => {
     debugger
     return dispatch => {
-        return axios
-            .post("http://192.168.1.105:8002/api/likeorunlike", data)
+         axios
+            .post("http://192.168.1.105:8002/api/likeorunlike", {postid: data.postid, userid: data.userid})
             .then(res => {
                 if (res.status === 200) {
                     debugger;
@@ -47,9 +47,10 @@ export const likePost = (data, index) => {
                         }
                     });
                 }
-                return res;
+                //return res;
             })
             .catch(err => {
+                console.log("hata",err);
                 Alert.alert(
                     "Uyarı",
                     "Beklenmeyen Bir Hata Gerçekleşti Lütfen Daha Sonra Tekrar Dene",
@@ -59,7 +60,7 @@ export const likePost = (data, index) => {
                     }],
                     {cancelable: false}
                 );
-                return err;
+          /*      return err;*/
             });
     };
 }

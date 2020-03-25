@@ -16,6 +16,25 @@ export default (state = INITIAL_STATE, action) => {
 
         case likeOrUnlikePost:
             debugger
+            //likedPost[action.payload].userLike = !likedPost[action.payload.index].userLike
+            let likedPost = state.posts
+            let like = []
+            if (action.payload.data.likeType === true) {
+                //pushlanacak
+                state.posts[action.payload.index].like.push(action.payload.data.user)
+                like = state.posts[action.payload.index].like
+                /*     return item.id != action.payload.data.userid*/
+
+            } else {
+                like = state.posts[action.payload.index].like.filter((item) => {
+                    return item.id != action.payload.data.userid
+                })
+            }
+            likedPost[action.payload.index].like = like
+            let obj = Object.assign({}, state, {
+                posts: likedPost,
+            });
+            return obj
         //TODO
         /*           let likedPost = state.posts
                    let like = []
@@ -25,7 +44,7 @@ export default (state = INITIAL_STATE, action) => {
 
                        })
                    }
-                   likedPost[action.payload].userLike = !likedPost[action.payload.index].userLike
+
                    debugger
                    likedPost[action.payload].like = like
                    debugger

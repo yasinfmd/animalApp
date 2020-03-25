@@ -52,16 +52,25 @@ class HomeScreen extends React.Component {
 
     likePost = (item, index) => {
         console.log("like", item)
+        let likeType;
+        if (item.userLike == true) {
+            likeType = false
+        } else {
+            likeType = true
+        }
         let data = {
+            user: this.props.user.user[0],
             postid: item.id,
-            userid: item.user[0].id
+            userid: item.user[0].id,
+            likeType: likeType
         }
         debugger
-        this.props.likePost(data, index).then((res) => {
-            debugger
-        }).catch((err) => {
-            debugger
-        })
+        this.props.likePost(data, index);
+        /*          .then((res) => {
+                  debugger
+              }).catch((err) => {
+                  debugger
+              })*/
     }
     renderPosts = () => {
         let postItem;
@@ -75,8 +84,9 @@ class HomeScreen extends React.Component {
                 this.props.posts.posts.forEach((item) => {
                     debugger
                     item.like.forEach((user) => {
+                        console.log("item1", user)
                         debugger
-                        if (this.props.user.user[0].id == item.user[0].id) {
+                        if (this.props.user.user[0].id == user.id) {
                             debugger
                             item.userLike = true
                         } else {
@@ -85,6 +95,7 @@ class HomeScreen extends React.Component {
                         }
                     })
                 })
+
                 postItem = this.props.posts.posts.map((item, i) => (
 
                     <AnimalPost
