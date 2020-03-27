@@ -4,12 +4,17 @@ import {
     Container,
     Text,
     Content,
+    Button,
+    Icon,
+    View,
+    Fab
 } from 'native-base';
 import CustomHeader from "../components/customHeader"
 import {fetchPosts, likePost} from "../actions"
 import {connect} from "react-redux"
 import Loading from "../components/loading";
 import AnimalPost from "../components/animalPost";
+import ActionButton from "../components/actionButton";
 
 class HomeScreen extends React.Component {
 
@@ -18,7 +23,8 @@ class HomeScreen extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            refreshing: false
+            refreshing: false,
+            active: false
         }
     }
 
@@ -129,10 +135,14 @@ class HomeScreen extends React.Component {
 
     render() {
         return (
+
             <Container>
+
                 <CustomHeader iconame={"menu"} headertitle={"AnaSayfa"} headerleftPress={() => {
                     this.props.navigation.toggleDrawer();
                 }}/>
+
+
                 <Content style={{padding: 10}}
 
                          refreshControl={
@@ -146,11 +156,17 @@ class HomeScreen extends React.Component {
                          scrollEventThrottle={2500}
 
                 >
+
                     {this.state.loading == true ? <Loading/> : this.renderPosts()}
-
                 </Content>
-
-
+                <Fab
+                    active={this.state.active}
+                    style={{backgroundColor: '#5067FF'}}
+                    position="bottomRight"
+                    onPress={() => this.props.navigation.navigate("Gonderi")}
+                >
+                    <Icon name="add"/>
+                </Fab>
             </Container>
         )
     }

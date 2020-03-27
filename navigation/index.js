@@ -7,6 +7,8 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import LikedUser from "../screens/likederuserscreen";
 import CustomDrawer from "../components/customDrawer";
 import UserProfileScreen from "../screens/userProfileScreen";
+import NewPostScreen from "../screens/newpostscreen";
+import ImageBrowser from "../screens/imagebrowserscreen";
 
 const appStackNavigation = createStackNavigator();
 
@@ -31,7 +33,7 @@ export const AppNavigator = () => {
                 options={{
                     headerShown: false,
                 }}
-                name="Login" component={LoginScreen}/>
+                name="Login" component={NewPostScreen}/>
             <appStackNavigation.Screen
                 options={{
                     headerShown: false,
@@ -47,11 +49,23 @@ export const AppNavigator = () => {
                 options={
                     {
 
-                    headerShown: false,
-                }
+                        headerShown: false,
+                    }
                 }
                 name="Profil" component={UserProfileScreen}/>
+            <appStackNavigation.Screen
+                options={
+                    {
+                        headerShown: false,
+                    }
+                }
+                name="Gonderi" component={NewPostScreen}/>
 
+            <appStackNavigation.Screen
+                options={
+                    {headerShown: false,}
+                }
+                name="ImageBrowser" component={ImageBrowser}/>
 
             <appStackNavigation.Screen
                 options={{
