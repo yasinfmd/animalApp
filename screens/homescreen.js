@@ -2,11 +2,8 @@ import React from "react"
 import {RefreshControl} from "react-native"
 import {
     Container,
-    Text,
     Content,
-    Button,
     Icon,
-    View,
     Fab
 } from 'native-base';
 import CustomHeader from "../components/customHeader"
@@ -89,17 +86,22 @@ class HomeScreen extends React.Component {
                 debugger
                 this.props.posts.posts.forEach((item) => {
                     debugger
-                    item.like.forEach((user) => {
-                        console.log("item1", user)
-                        debugger
-                        if (this.props.user.user[0].id == user.id) {
+                    if (item.like.length > 0) {
+
+                        item.like.forEach((user) => {
+                            console.log("item1", user)
                             debugger
-                            item.userLike = true
-                        } else {
-                            debugger
-                            item.userLike = false
-                        }
-                    })
+                            if (this.props.user.user[0].id == user.id) {
+                                debugger
+                                item.userLike = true
+                            } else {
+                                debugger
+                                item.userLike = false
+                            }
+                        })
+                    } else {
+                        item.userLike = false
+                    }
                 })
 
                 postItem = this.props.posts.posts.map((item, i) => (
@@ -173,7 +175,6 @@ class HomeScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
-    debugger;
     return {
         posts: state.post,
         user: state.user

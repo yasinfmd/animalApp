@@ -3,7 +3,7 @@ import {Header, Left, Body, Right, Button, Icon, Title, Text} from 'native-base'
 
 const CustomHeader = (props) => {
     return (
-        <Header>
+        <Header  style={{height:100,paddingTop:25}}>
             <Left>
                 <Button transparent onPress={props.headerleftPress}>
                     <Icon name={props.iconame}/>

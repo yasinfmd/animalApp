@@ -1,6 +1,7 @@
 import axios from "axios";
 import {createPost, getPost, likeOrUnlikePost} from "../../reducers/post/const";
 import {Alert} from "react-native";
+import {exp} from "react-native-reanimated";
 
 export const fetchPosts = data => {
     debugger;
@@ -32,15 +33,12 @@ export const fetchPosts = data => {
     };
 };
 
-export const addPostImage = (data) => {
+
+export const addPost = (data) => {
     debugger
     return dispatch => {
         return axios
-            .post("http://192.168.1.105:8002/api/file", data, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            })
+            .post("http://192.168.1.105:8002/api/animalpost", data)
             .then(res => {
                 if (res.status === 200) {
                     debugger;
@@ -49,9 +47,18 @@ export const addPostImage = (data) => {
             })
             .catch(err => {
                 debugger
+                Alert.alert(
+                    "Uyarı",
+                    "Beklenmeyen Bir Hata Gerçekleşti Lütfen Daha Sonra Tekrar Dene",
+                    [{
+                        text: "Tamam", onPress: () => {
+                        }
+                    }],
+                    {cancelable: false}
+                );
                 console.log("hata", err.response);
-                        debugger
-               // return err;
+                debugger
+                // return err;
             });
     };
 }

@@ -9,6 +9,7 @@ import CustomDrawer from "../components/customDrawer";
 import UserProfileScreen from "../screens/userProfileScreen";
 import NewPostScreen from "../screens/newpostscreen";
 import ImageBrowser from "../screens/imagebrowserscreen";
+import StartupScreen from "../screens/startupscreen";
 
 const appStackNavigation = createStackNavigator();
 
@@ -33,7 +34,12 @@ export const AppNavigator = () => {
                 options={{
                     headerShown: false,
                 }}
-                name="Login" component={NewPostScreen}/>
+                name="Startup" component={StartupScreen}/>
+            <appStackNavigation.Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Login" component={LoginScreen}/>
             <appStackNavigation.Screen
                 options={{
                     headerShown: false,

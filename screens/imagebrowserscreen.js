@@ -9,23 +9,23 @@ export default class ImageBrowserScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tthis: null,
             selectedImg: 0,
         }
     }
 
+    componentDidMount(): void {
+        this.setState({
+            selectedImg: 0
+        })
+    }
+
     imagesCallback = (callback) => {
-        debugger
         const {navigation} = this.props;
-        debugger
-        navigation.setParams({loading: true});
-        debugger
+       /* navigation.setParams({loading: true});*/
         callback.then(async (photos) => {
-            debugger
             const cPhotos = [];
             for (let photo of photos) {
                 const pPhoto = await this._processImageAsync(photo.uri);
-                console.log("gelene", pPhoto)
                 cPhotos.push({
                     base64: pPhoto.base64,
                     uri: pPhoto.uri,
@@ -35,24 +35,23 @@ export default class ImageBrowserScreen extends Component {
             }
             navigation.navigate('Gonderi', {photos: cPhotos});
         })
-            .catch((e) => console.log(e))
-            .finally(() => navigation.setParams({loading: false}));
+            .catch((e) => console.log("burdan",e))
+            .finally(() => {
+             /*   navigation.setParams({loading: false})*/
+            });
     };
 
     async _processImageAsync(uri) {
-        debugger
         const file = await ImageManipulator.manipulateAsync(
             uri,
             [{resize: {width: 1000}}],
             {compress: 0.8, base64: true}
         );
-        debugger
-        console.log("dosyaya", file)
         return file;
     }
 
     updateHandler = (count, onSubmit) => {
-        debugger
+        
         this.props.navigation.setParams({
             headerTitle: `Selected ${count} files`,
             headerRight: onSubmit,
@@ -60,12 +59,14 @@ export default class ImageBrowserScreen extends Component {
         this.setState({
             selectedImg: count
         })
-        debugger
     };
     onSubmit = () => {
-        debugger
-        this.props.route.params.headerRight()
-        debugger
+        if (this.state.selectedImg > 0) {
+            this.props.route.params.headerRight()
+        } else {
+            this.props.navigation.navigate("Gonderi")
+        }
+
     }
 
     renderSelectedComponent = (number) => (
@@ -75,17 +76,17 @@ export default class ImageBrowserScreen extends Component {
     );
 
     render() {
-        const emptyStayComponent = <Text style={styles.emptyStay}>Empty =(</Text>;
+        const emptyStayComponent = <Text style={styles.emptyStay}>Galerinizde Hiç Resim Yok</Text>;
 
         return (
 
             <View style={[styles.flex, styles.container]}>
                 <CustomHeader iconame={"arrow-back"}
-                              righticon={"add"}
+                              righticon={"checkmark"}
                               headerrightPress={() => {
                                   this.onSubmit()
                               }}
-                              headertitle={this.state.selectedImg == 0 ? "Seçili Resim Yok" : this.state.selectedImg}
+                              headertitle={this.state.selectedImg == 0 ? "Seçili Resim Yok" : "Seçili Resim " + " " + this.state.selectedImg}
                               headerleftPress={() => {
                                   this.props.navigation.pop();
                               }}/>
