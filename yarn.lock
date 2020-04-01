@@ -4491,7 +4491,7 @@ react-native-drawer@2.5.1:
     prop-types "^15.5.8"
     tween-functions "^1.0.1"
 
-react-native-easy-grid@0.2.2:
+react-native-easy-grid@0.2.2, react-native-easy-grid@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/react-native-easy-grid/-/react-native-easy-grid-0.2.2.tgz#f0be33620be1ebe2d2295918eb58b0a27e8272ab"
   integrity sha512-MlYrNIldnEMKn6TVatQN1P64GoVlwGIuz+8ncdfJ0Wq/xtzUkQwlil8Uksyp7MhKfENE09MQnGNcba6Mx3oSAA==
@@ -4542,6 +4542,13 @@ react-native-screens@^2.0.0-alpha.12:
   integrity sha512-a0VzxOWot7F9B/GQyDSssBRd3jUJazFnTQS61IiyReWB6aHlFhf3Xz10jBRoURXy1EMCDCHgenmTVTkKHpKyqQ==
   dependencies:
     debounce "^1.2.0"
+
+react-native-super-grid@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-super-grid/-/react-native-super-grid-3.1.2.tgz#55deb3cd52173c487b76c868e7f794044fc0c6cd"
+  integrity sha512-H7dB2j0ZGH6i//2oOy1xtdLam1k3Y41jIdLwv1ukSTuSe9j/de++GrrCLqZvjAaHx2JNHgrqQRQy3kqzKos3DQ==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-swipe-image@^1.1.0:
   version "1.1.0"

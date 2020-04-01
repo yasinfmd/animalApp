@@ -1,5 +1,5 @@
 import React from "react"
-import {RefreshControl} from "react-native"
+import {RefreshControl, SafeAreaView} from "react-native"
 import {
     Container,
     Content,
@@ -30,12 +30,12 @@ class HomeScreen extends React.Component {
             loading: true
         })
         this.props.fetchPosts().then((res) => {
-            debugger
+
             this.setState({
                 loading: false
             })
         }).catch((err) => {
-            debugger
+
             this.setState({
                 loading: false
             })
@@ -67,15 +67,16 @@ class HomeScreen extends React.Component {
             userid: item.user[0].id,
             likeType: likeType
         }
-        debugger
+
         this.props.likePost(data, index);
         /*          .then((res) => {
-                  debugger
+                  
               }).catch((err) => {
-                  debugger
+                  
               })*/
     }
     renderPosts = () => {
+        debugger
         let postItem;
         if (this.state.loading === true) {
             postItem = (
@@ -83,19 +84,19 @@ class HomeScreen extends React.Component {
             );
         } else {
             if (this.props.posts.posts.length > 0) {
-                debugger
+            debugger
                 this.props.posts.posts.forEach((item) => {
-                    debugger
+
                     if (item.like.length > 0) {
 
                         item.like.forEach((user) => {
                             console.log("item1", user)
-                            debugger
+
                             if (this.props.user.user[0].id == user.id) {
-                                debugger
+
                                 item.userLike = true
                             } else {
-                                debugger
+
                                 item.userLike = false
                             }
                         })
@@ -103,10 +104,11 @@ class HomeScreen extends React.Component {
                         item.userLike = false
                     }
                 })
-
+    debugger
                 postItem = this.props.posts.posts.map((item, i) => (
 
                     <AnimalPost
+                        key={i}
                         likePress={() => {
                             this.likePost(item, i)
                         }}
@@ -137,44 +139,44 @@ class HomeScreen extends React.Component {
 
     render() {
         return (
+                <Container>
 
-            <Container>
-
-                <CustomHeader iconame={"menu"} headertitle={"AnaSayfa"} headerleftPress={() => {
-                    this.props.navigation.toggleDrawer();
-                }}/>
+                    <CustomHeader iconame={"menu"} headertitle={"AnaSayfa"} headerleftPress={() => {
+                        this.props.navigation.toggleDrawer();
+                    }}/>
 
 
-                <Content style={{padding: 10}}
+                    <Content style={{padding: 10}}
 
-                         refreshControl={
-                             <RefreshControl
-                                 onRefresh={this.onRefresh}
-                                 refreshing={this.state.refreshing}
-                                 title="Yükleniyor"
-                                 progressBackgroundColor={'#fff'}
-                             />
-                         }
-                         scrollEventThrottle={2500}
+                             refreshControl={
+                                 <RefreshControl
+                                     onRefresh={this.onRefresh}
+                                     refreshing={this.state.refreshing}
+                                     title="Yükleniyor"
+                                     progressBackgroundColor={'#fff'}
+                                 />
+                             }
+                             scrollEventThrottle={2500}
 
-                >
+                    >
 
-                    {this.state.loading == true ? <Loading/> : this.renderPosts()}
-                </Content>
-                <Fab
-                    active={this.state.active}
-                    style={{backgroundColor: '#5067FF'}}
-                    position="bottomRight"
-                    onPress={() => this.props.navigation.navigate("Gonderi")}
-                >
-                    <Icon name="add"/>
-                </Fab>
-            </Container>
+                        {this.state.loading == true ? <Loading/> : this.renderPosts()}
+                    </Content>
+                    <Fab
+                        active={this.state.active}
+                        style={{backgroundColor: '#5067FF'}}
+                        position="bottomRight"
+                        onPress={() => this.props.navigation.navigate("Gonderi")}
+                    >
+                        <Icon name="add"/>
+                    </Fab>
+                </Container>
         )
     }
 }
 
 const mapStateToProps = state => {
+    debugger
     return {
         posts: state.post,
         user: state.user

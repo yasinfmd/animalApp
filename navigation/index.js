@@ -10,7 +10,7 @@ import UserProfileScreen from "../screens/userProfileScreen";
 import NewPostScreen from "../screens/newpostscreen";
 import ImageBrowser from "../screens/imagebrowserscreen";
 import StartupScreen from "../screens/startupscreen";
-
+import UserPostScreen from "../screens/userpostscreen";
 const appStackNavigation = createStackNavigator();
 
 const Drawer = createDrawerNavigator();
@@ -21,6 +21,9 @@ export const AppDrawer = () => {
                           drawerContent={CustomDrawer}
         >
             <Drawer.Screen name="AnaSayfa" component={HomeScreen} options={{
+                headerShown: false,
+            }}/>
+            <Drawer.Screen name="Gonderilerim" component={UserPostScreen} options={{
                 headerShown: false,
             }}/>
         </Drawer.Navigator>
@@ -59,6 +62,7 @@ export const AppNavigator = () => {
                     }
                 }
                 name="Profil" component={UserProfileScreen}/>
+
             <appStackNavigation.Screen
                 options={
                     {

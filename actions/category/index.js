@@ -3,7 +3,6 @@ import {getCategory} from "../../reducers/category/const";
 import {Alert} from "react-native";
 
 export const fetchCategory = data => {
-    debugger;
     return dispatch => {
         return axios
             .get("http://192.168.1.105:8002/api/category")

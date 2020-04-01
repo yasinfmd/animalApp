@@ -1,8 +1,7 @@
 import React from "react";
 import {ImageBackground} from "react-native"
-import {FlatList, TouchableOpacity, Image} from "react-native";
 import {Container, Header, Text, Content, ListItem, List} from "native-base";
-
+import { useSelector } from "react-redux";
 const CustomDrawer = (props) => {
     return (
         <Container>
@@ -24,7 +23,7 @@ const CustomDrawer = (props) => {
 
 
                 <List
-                    dataArray={["AnaSayfa", "Profil", "Gönderilerim", "Beğendiklerim"]}
+                    dataArray={["AnaSayfa", "Profil", "Gonderilerim", "Beğendiklerim"]}
                     contentContainerStyle={{marginTop: 250}}
                     renderRow={data => {
                         return (
@@ -49,4 +48,8 @@ const CustomDrawer = (props) => {
 
 
 }
+const mapStateToProps = state => ({
+    user: state.user
+});
 export default CustomDrawer;
+/*export default CustomDrawer;*/

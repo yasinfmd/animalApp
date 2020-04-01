@@ -18,7 +18,7 @@ export const loginUser = data => {
             .post("http://192.168.1.105:8002/api/login", data)
             .then(res => {
                 if (res.status === 200) {
-                    debugger;
+               
                     dispatch({
                         type: userLogin,
                         payload: res.data
@@ -38,7 +38,7 @@ export const loginUser = data => {
                 return res;
             })
             .catch(err => {
-                debugger;
+           
                 Alert.alert(
                     "Uyarı",
                     "Beklenmeyen Bir Hata Gerçekleşti Lütfen Daha Sonra Tekrar Dene",

@@ -4,8 +4,6 @@ const INITIAL_STATE = {
     category: []
 }
 export default (state = INITIAL_STATE, action) => {
-    debugger
-
     switch (action.type) {
         case getCategory:
             return Object.assign({}, state, {

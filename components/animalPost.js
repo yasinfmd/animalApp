@@ -16,7 +16,7 @@ import {Image} from "react-native";
 import Swiper from "react-native-swipe-image";
 import ImageSwiper from "../components/imageSwiper"
 
-export default class animalPost extends React.Component {
+export default class  animalPost extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -35,7 +35,7 @@ export default class animalPost extends React.Component {
                 "https://cdn4.iconfinder.com/data/icons/standard-free-icons/139/Profile01-128.png";
         }
         return (
-            <Card style={{flex: 0, margin: 5, marginTop: 5, marginBottom: 25}}>
+            <Card style={{flex: 0, margin: 5, marginTop: 5, marginBottom: 25}} >
                 <CardItem>
                     <Thumbnail
                         style={{width: 25, height: 50}}

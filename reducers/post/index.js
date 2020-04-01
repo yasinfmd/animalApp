@@ -1,7 +1,8 @@
-import {getPost, createPost, likeOrUnlikePost} from "../post/const";
+import {getPost, createPost, likeOrUnlikePost, userPost} from "../post/const";
 
 const INITIAL_STATE = {
-    posts: []
+    posts: [],
+    userposts: []
 }
 export default (state = INITIAL_STATE, action) => {
     debugger
@@ -12,6 +13,21 @@ export default (state = INITIAL_STATE, action) => {
 
             return Object.assign({}, state, {
                 posts: action.payload,
+            });
+        case userPost:
+            debugger
+
+            return Object.assign({}, state, {
+                userposts: action.payload,
+            });
+
+        case createPost:
+            debugger
+            action.payload.userLike = false
+            let joined = state.posts;
+            joined.unshift(action.payload)
+            return Object.assign({}, state, {
+                posts: joined
             });
 
         case likeOrUnlikePost:

@@ -1,10 +1,10 @@
 import React from "react";
 import { AppLoading } from "expo";
-import { Container, Header, Content, Accordion } from "native-base";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStore, applyMiddleware } from "redux";
+import {SafeAreaView} from "react-native"
 import { Provider } from "react-redux";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
@@ -38,11 +38,13 @@ export default class App extends React.Component {
     }
 
     return (
+        <SafeAreaView style={{flex: 1}}>
       <Provider store={store}>
         <NavigationContainer>
           <AppNavigator />
         </NavigationContainer>
       </Provider>
+        </SafeAreaView>
     );
   }
 }

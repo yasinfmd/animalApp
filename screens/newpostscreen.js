@@ -156,10 +156,12 @@ class NewPostScreen extends Component {
             type: this.state.selectedtype,
             imagelist: this.state.imageList
         }).then((res) => {
+
         }).catch((err) => {
             debugger
         })
         this.props.navigation.navigate("AnaSayfa")
+
     }
 
     renderPickerItem = () => {

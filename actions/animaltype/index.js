@@ -3,7 +3,6 @@ import {getAnimalType} from "../../reducers/animaltype/const";
 import {Alert} from "react-native";
 
 export const fetchAnimalType = data => {
-    debugger;
     return dispatch => {
         return axios
             .get("http://192.168.1.105:8002/api/animaltype")
